@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Franc-Maçonnerie</title>
+    <!-- Lien vers le CSS moderne -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Police élégante (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="background-overlay"></div>
+
+    <header>
+        <div class="symbol-top">
+            <!-- Emplacement pour le symbole du triangle ou de l'oeil -->
+            <div class="triangle-icon">△</div> 
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}" class="{{ 'active' if request.path == '/' else '' }}">Accueil</a></li>
+                <li><a href="{{ url_for('principes') }}" class="{{ 'active' if request.path == '/principes' else '' }}">Principes</a></li>
+                <li><a href="{{ url_for('obediences') }}" class="{{ 'active' if request.path == '/obediences' else '' }}">Obédiences</a></li>
+                <li><a href="{{ url_for('abecedaire') }}" class="{{ 'active' if request.path == '/abecedaire' else '' }}">Abécédaire</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="glass-container">
+        <!-- C'est ici que le contenu spécifique de chaque page sera injecté -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-symbols">
+            <span>☾</span> <!-- Lune -->
+            <span>☼</span> <!-- Soleil -->
+        </div>
+        <p>&copy; 2023 - Site Maçonnique Moderne</p>
+    </footer>
+
+</body>
+</html>
